@@ -1,25 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace DungeonExplorer
 {
-    public class Player
+    internal class Player
     {
-        public string Name { get; private set; }
-        public int Health { get; private set; }
-        private List<string> inventory = new List<string>();
+        private string name;
+        private int health;
+        private string inventoryItem;
 
-        public Player(string name, int health) 
+        public Player(string name, int health)
         {
-            Name = name;
-            Health = health;
+            this.name = name;
+            this.health = health;
+            this.inventoryItem = null;
         }
+
+        public string Name
+        {
+            get { return name; }
+        }
+
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+
+        public string InventoryItem
+        {
+            get { return inventoryItem; }
+        }
+
         public void PickUpItem(string item)
         {
-
+            inventoryItem = item;
         }
-        public string InventoryContents()
+
+        public void DisplayStatus()
         {
-            return string.Join(", ", inventory);
+            Console.WriteLine($"Player: {name}, Health: {health}, Inventory: {inventoryItem ?? "Empty"}");
         }
     }
 }

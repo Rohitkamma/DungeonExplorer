@@ -1,6 +1,8 @@
-﻿namespace DungeonExplorer
+﻿using System;
+
+namespace DungeonExplorer
 {
-    public class Room
+    internal class Room
     {
         private string description;
 
