@@ -1,22 +1,24 @@
-﻿using System;
+using System;
 
-namespace DungeonExplorer
+namespace DungeonExplorer_Simplified
 {
-    // Represents a room in the dungeon with a description
-    internal class Room
+    public class Room
     {
-        //private field to store the rooms description
-        private string description;
-        
-        //constructor to itialize the room with a description
-        public Room(string description)
+        public string Description { get; set; }
+        public Monster Monster { get; set; }
+        public Item Item { get; set; }
+
+        // Constructor to accept either an Item or a Monster (not both at the same time)
+        public Room(string description, Item item = null, Monster monster = null)
         {
-            this.description = description;
+            Description = description;
+            Item = item;
+            Monster = monster;
         }
-        //method to retrieve the rooms descripiton
-        public string GetDescription()
+
+        public void Connect(Room room)
         {
-            return description;
+            Console.WriteLine($"Connected to {room.Description}.");
         }
     }
 }
